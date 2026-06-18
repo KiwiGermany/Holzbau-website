@@ -1,0 +1,2256 @@
+/* ==========================================================================
+   1. GLOBAL RESETS & FONTS
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. PREMIUM NAVBAR (Optimized Overlap & Edge-to-Edge Spacing)
+   ========================================================================== */
+.topnav {
+  background-color: #ffffff; 
+  display: flex;
+  align-items: center;      
+  justify-content: flex-start; 
+  height: 95px;              
+  padding: 0 30px;             /* Reduced from 40px to pull elements closer to the screen edges */
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06); 
+  position: relative;
+  z-index: 999;                /* Keeps the navbar base above the slideshow */
+}
+/* --- Logo Styling (Centered & Extra Prominent) --- */
+.logo-link {
+  display: flex;
+  align-items: center;      
+  height: 95px;                /* Stays locked to the navbar height for perfect centering */
+  margin-right: 55px;          /* Increased from 40px to give the massive logo breathing room */
+  padding: 0 !important;     
+  flex-shrink: 0;              /* Absolutely forbids the browser from shrinking the logo */
+}
+
+.nav-logo {
+  height: 90px;                
+  width: auto;               
+  display: block;
+  object-fit: contain;       
+  transform: scale(2.2);       /* CRANKED UP: Blows it up to a proud, premium corporate size */
+}
+
+
+/* Base Nav Items */
+.topnav .nav-item {
+  color: #2c3e50;            
+  text-decoration: none;
+  padding: 0 16px;             
+  font-size: 19px;           
+  font-weight: 600;          
+  letter-spacing: 0.5px;      
+  height: 95px;               
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;         
+}
+
+/* Hover Effect for text colors */
+.topnav .nav-item:hover {
+  color: #D4AF37;            
+}
+
+/* --- THE ACTIVE UNDERFRAME EFFECT --- */
+.topnav .nav-item.active-page {
+  color: #D4AF37;
+}
+
+.topnav .nav-item.active-page::after {
+  content: '';
+  position: absolute;
+  bottom: 0;                   /* Latches perfectly flush to the bottom edge */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #D4AF37;
+}
+
+/* --- DROPDOWN LOGIC --- */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  height: 95px;
+}
+
+.nav-arrow {
+  font-size: 12px;
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .nav-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 95px; 
+  left: 0;
+  background-color: #ffffff;
+  min-width: 260px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 0 0 6px 6px;
+  border-top: 3px solid #D4AF37; 
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: #2c3e50;
+  padding: 14px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8f9fa;
+  color: #D4AF37;
+  padding-left: 25px; 
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* --- SOCIAL MEDIA CLUSTER (BALANCED RIGHT ZONE) --- */
+.social-cluster {
+  display: flex;
+  align-items: center;
+  gap: 24px;                   
+  margin-left: auto;           /* Pushes the social icons and button completely to the right */
+  padding-left: 40px;          
+  margin-right: 35px;          /* Creates excellent breathing room between the icons and Kontakt */
+}
+
+/* Target the icons directly */
+.social-cluster a {
+  font-size: 24px;             
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.social-cluster a .fa-instagram { color: #E1306C; }
+.social-cluster a .fa-facebook { color: #1877F2; }
+.social-cluster a .fa-youtube { color: #FF0000; }
+
+.social-cluster a:hover {
+  opacity: 0.8;
+  transform: scale(1.15); 
+}
+
+/* Premium Kontakt Button */
+.topnav a.cta-btn {
+  background-color: transparent; 
+  color: #D4AF37 !important;     
+  border: 2px solid #D4AF37;     
+  border-radius: 6px;            
+  padding: 11px 26px;          
+  font-size: 18px;
+  font-weight: 600;          
+  letter-spacing: 1px;
+  text-transform: uppercase;     
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Hover & Click State: Solid Fill (Only applies to Kontakt) */
+.topnav a.cta-btn:hover,
+.topnav a.cta-btn:active {
+  background-color: #D4AF37 !important;     
+  color: #ffffff !important;   
+}
+
+/* This forces the button to stay yellow when you are sitting on the Kontakt page */
+.topnav a.cta-btn.active-page {
+  background-color: #D4AF37 !important;
+  color: #ffffff !important;
+}
+
+
+/* ==========================================================================
+   4. SLOGAN SECTION (Premium Asymmetric Layout - Perfect Alignment)
+   ========================================================================== */
+.slogan-section {
+  padding: 120px 40px; 
+  background-color: #ffffff; 
+  border-bottom: none;      
+}
+
+.slogan-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch; 
+  gap: 60px;
+}
+
+.slogan-text {
+  flex: 1.1;
+  position: relative;
+  /* CHANGED: Set top padding to 0 so the content starts exactly at the top line */
+  padding: 0 20px 40px 20px; 
+}
+
+/* Ensures text sits beautifully */
+.slogan-title, .slogan-subtitle, .slogan-divider, .slogan-description {
+  position: relative;
+  z-index: 2;
+}
+
+.slogan-title {
+  font-size: 42px; 
+  color: #1a1a1a;  
+  margin-top: 0; /* FIXED: Removes default browser heading margin to line up flush with the image */
+  margin-bottom: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.slogan-subtitle {
+  font-size: 22px;
+  color: #D4AF37;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
+}
+
+.slogan-divider {
+  width: 80px;
+  height: 5px;
+  background-color: #D4AF37;
+  margin-bottom: 30px;
+}
+
+.slogan-description {
+  font-size: 17px;
+  color: #4a5560; 
+  line-height: 1.8;
+  max-width: 90%; 
+}
+
+/* Handles layout image beautifully */
+.slogan-image {
+  flex: 1.4; 
+  display: flex;
+  align-items: stretch;
+}
+.slogan-image img, 
+.slogan-img {
+  width: 100% !important;
+  max-width: 100% !important;  
+  height: 100% !important;       
+  min-height: 450px;             
+  object-fit: cover !important;  
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); 
+  transform: none !important; /* This resets the accidental zoom effect */
+}
+/* ==========================================================================
+   3. HERO SLIDESHOW CONTAINER
+   ========================================================================== */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  height: 590px;              /* CHANGED: Reduced from 650px to make the slider shorter */
+  overflow: hidden;
+  background-color: #2c3e50;
+}
+
+.mySlides {
+  display: none;
+  height: 100%;
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fade Animation */
+.fade {
+  animation-name: fadeEffect;
+  animation-duration: 1.5s;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0.4; } 
+  to { opacity: 1; }
+}
+
+/* Base Style for Project Description Boxes (Slides 2+) */
+.project-description-box {
+  position: absolute;
+  bottom: 50px;               /* CHANGED: Tucked down slightly from 80px to match the shorter slider */
+  left: 40px;
+  background-color: rgba(44, 62, 80, 0.9);
+  color: #ffffff;
+  padding: 30px;              /* CHANGED: Compacted padding from 35px */
+  border-radius: 6px;
+  max-width: 550px;
+  border-left: 6px solid #D4AF37;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.project-description-box h2 {
+  font-size: 28px;            /* CHANGED: Slightly downscaled from 32px to fit beautifully */
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.project-description-box p {
+  font-size: 16px;            /* CHANGED: Slightly downscaled from 18px */
+  color: #e0e0e0;
+  line-height: 1.4;
+}
+
+/* --- ONLY FIRST SLIDE MODIFICATIONS (To Match Picture Exactly) --- */
+.hero-text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  background-color: transparent;    
+  color: #ffffff;
+  padding: 30px 50px;         /* CHANGED: Slightly smaller padding */
+  max-width: 800px;
+  width: 85%;
+  text-align: center;
+  border: 3px solid #ffffff;         
+  box-shadow: none;
+}
+
+.hero-text-box h1 {
+  font-size: 46px;            /* CHANGED: Downscaled from 54px so it won't feel crowded */
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.hero-text-box p {
+  font-size: 20px;            /* CHANGED: Downscaled from 22px */
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Slider Navigation Buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  padding: 18px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.3s ease;
+  border-radius: 0 4px 4px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(212, 175, 55, 0.8); 
+}
+
+/* Indicator Dots */
+.dots-container {
+  position: absolute;
+  bottom: 12px;               /* CHANGED: Moved from 25px down to 12px to pull them right to the bottom edge */
+  width: 100%;
+  text-align: center;
+  z-index: 10;                /* ADDED: Guarantees the dots sit safely on top of image layers */
+}
+
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.active, .dot:hover {
+  background-color: #D4AF37;
+  transform: scale(1.2);
+}
+
+
+/* ==========================================================================
+   5. SERVICES SECTION & CARDS GRID
+   ========================================================================== */
+.services-section {
+  padding: 90px 40px;
+  background-color: #ffffff; /* Clean white page background just like your inspiration */
+}
+
+.services-intro {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 45px auto;
+}
+
+.services-intro h2 {
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.intro-text {
+  font-size: 17px;
+  color: #606f7b;
+  line-height: 1.6;
+}
+
+/* Pipe Separated Text Sub-rows */
+.sub-services-container {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.sub-services-row {
+  font-size: 16px;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+
+.pipe {
+  color: #D4AF37;
+  margin: 0 16px;
+  font-weight: 700;
+}
+
+/* Service Premium Cards Grid */
+.services-grid {
+  display: grid;
+  /* Allows three cards to comfortably sit next to each other */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px; /* Clean spacing between cards like the inspiration image */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual individual card container */
+.service-card {
+  background-size: cover;
+  background-position: center;
+  height: 450px; /* Elegant height to give the image and text breathing room */
+  border-radius: 4px; /* Subtle, clean corner rounding matching your inspiration image */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Soft drop shadow to make them pop out */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle lifts on hover to make it feel premium */
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Content Box - Structured like the inspiration style */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 30px; /* Generous padding so text never touches the edge */
+  /* Linear gradient overlay that starts dark at the bottom and fades out near the top */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%; /* Ensures the gradient covers the card perfectly */
+  box-sizing: border-box;
+}
+
+/* Bold white card heading */
+.service-card h3 {
+  color: #ffffff;
+  font-size: 28px; /* Prominent heading size like 'ZIMMEREI' */
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Gold 'MEHR ERFAHREN >' Link button */
+.btn-more {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1.5px solid #D4AF37; /* Clean gold border outline box */
+  padding: 10px 20px;
+  align-self: flex-start; /* Keeps the button container tight around the text */
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Hover style for the link button */
+.btn-more:hover {
+  background-color: #D4AF37;
+  color: #000000;
+}
+
+.arrow {
+  margin-left: 6px;
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   6. LEISTUNGEN PAGE DETAILS (Deep-Dive Structure)
+   ========================================================================== */
+
+/* Page Header Intro */
+.leistungen-intro {
+  text-align: center;
+  padding: 80px 40px 40px 40px;
+  background-color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.leistungen-intro h1 {
+  font-size: 46px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.leistungen-intro p {
+  font-size: 19px;
+  color: #606f7b;
+  line-height: 1.6;
+}
+
+
+/* --- LEISTUNGEN PAGE FILTER MENU --- */
+.leistungen-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 60px;
+}
+
+.leistung-btn {
+  background-color: transparent;
+  color: #2c3e50;
+  border: 2px solid #eef2f5;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.leistung-btn:hover, 
+.leistung-btn.active {
+  background-color: #2c3e50;
+  color: #ffffff;
+  border-color: #2c3e50;
+}
+
+.leistung-btn.active {
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.15);
+}
+
+/* --- LAYOUT RESET FOR SERVICES CONTAINER --- */
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px; /* Reset left padding to look normal without the side nav */
+}
+
+/* --- Category Big Hero Strips --- */
+.category-section {
+  padding-bottom: 60px;
+}
+
+.category-hero {
+  height: 280px;
+  background-color: #2c3e50;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 20px;
+  margin-bottom: 60px;
+}
+
+.category-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(44, 62, 80, 0.7);
+  z-index: 1;
+}
+
+.category-hero h2 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.category-hero p {
+  font-size: 19px;
+  color: #e0e0e0;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Alternating Detailed Rows --- */
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 0 160px; /* Increased left padding to leave generous breathing room for the side menu */
+}
+
+.service-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 90px;
+}
+
+.service-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.service-text {
+  flex: 1;
+}
+
+.service-text h3 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
+  position: relative;
+}
+
+.service-text h3::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #D4AF37;
+  margin-top: 8px;
+}
+
+.service-text p {
+  font-size: 16px;
+  color: #4a5560;
+  line-height: 1.8;
+}
+
+.service-gallery {
+  flex: 1;
+}
+
+.service-gallery img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+/* --- Visual Quote Breaks --- */
+.visual-break {
+  background-color: #f8f9fa;
+  padding: 60px 40px;
+  text-align: center;
+  margin: 40px 0 80px 0;
+  border-top: 1px solid #eef2f5;
+  border-bottom: 1px solid #eef2f5;
+}
+
+.visual-break blockquote {
+  font-size: 22px;
+  font-style: italic;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.visual-break.alt-color {
+  background-color: #2c3e50;
+}
+.visual-break.alt-color blockquote {
+  color: #ffffff;
+}
+
+/* --- Final Call To Action (CTA) Block --- */
+.leistungen-cta {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 100px 40px;
+  border-top: 3px solid #D4AF37;
+}
+
+.leistungen-cta h2 {
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.leistungen-cta p {
+  font-size: 18px;
+  color: #606f7b;
+  margin-bottom: 35px;
+}
+
+.main-cta-btn {
+  display: inline-block;
+  background-color: #D4AF37;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 15px 35px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.main-cta-btn:hover {
+  background-color: #2c3e50;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 62, 80, 0.2);
+}
+
+
+@media (max-width: 992px) {
+  .service-row, .service-row.reverse {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 70px;
+  }
+  .service-gallery img {
+    height: 300px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   7. PROJEKTE PAGE (Portfolio Layout Styles)
+   ========================================================================== */
+.portfolio-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 100px 40px;
+}
+
+/* Portfolio Filter Buttons Bar */
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 60px;
+}
+
+.filter-btn {
+  background-color: transparent;
+  color: #2c3e50;
+  border: 2px solid #eef2f5;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover, 
+.filter-btn.active {
+  background-color: #2c3e50;
+  color: #ffffff;
+  border-color: #2c3e50;
+}
+
+.filter-btn.active {
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.15);
+}
+
+/* Portfolio Grid System */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 35px;
+}
+
+/* Portfolio Card Design */
+.portfolio-card {
+  background-size: cover;
+  background-position: center;
+  height: 450px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  background-color: #2c3e50; /* Fallback color */
+}
+
+/* Overlay gradient configuration */
+.portfolio-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(44, 62, 80, 0.2) 0%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Card Content Area styling */
+.portfolio-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  z-index: 2;
+  transform: translateY(40px); /* Hides description slightly by default */
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Sub-service Tag indicators */
+.project-tag {
+  display: inline-block;
+  color: #D4AF37;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.portfolio-card h3 {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* Project Description Paragraph - reveals smoothly on hover */
+.portfolio-card-content p {
+  color: #e0e0e0;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Card Hover Interactions */
+.portfolio-card:hover .portfolio-card-content {
+  transform: translateY(0);
+}
+
+.portfolio-card:hover .portfolio-card-content p {
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 0 20px 60px 20px;
+  }
+  .portfolio-filters {
+    margin-bottom: 40px;
+  }
+  .portfolio-card-content {
+    transform: translateY(0);
+    padding: 25px;
+  }
+  .portfolio-card-content p {
+    opacity: 1;
+  }
+}
+
+
+
+/* ==========================================================================
+   8. ÜBER UNS PAGE STYLES (History & Core Values Grid)
+   ========================================================================== */
+
+/* About Page Hero Section */
+.about-hero {
+  height: 380px;
+  background-color: #2c3e50;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 40px;
+}
+
+.about-hero h1 {
+  font-size: 52px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.about-hero p {
+  font-size: 21px;
+  color: #D4AF37;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* --- Section 3.1: Story Layout --- */
+.about-story-section {
+  padding: 120px 40px;
+  background-color: #ffffff;
+}
+
+.about-story-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.about-story-text {
+  flex: 1.2;
+}
+
+.about-story-text h2 {
+  font-size: 42px;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.about-story-text p {
+  font-size: 17px;
+  color: #4a5560;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+.about-cta-btn {
+  display: inline-block;
+  background-color: #2c3e50;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.about-cta-btn:hover {
+  background-color: #D4AF37;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
+}
+
+.about-story-image {
+  flex: 1;
+  display: flex;
+}
+
+.about-story-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+/* --- PREMIUM MINIMAL VALUES LAYOUT (Refined) --- */
+.premium-values-section {
+  padding: 100px 40px;
+  background-color: #ffffff;
+}
+
+.values-intro {
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  text-align: left; /* Keeps everything cleanly aligned to the left */
+}
+
+.values-intro h2 {
+  font-size: 36px; /* Standardized standard page heading size */
+  color: #2c3e50;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+/* Fixes the gold line position directly under the header */
+.values-intro .slogan-divider {
+  margin: 0 0 25px 0; 
+}
+
+.values-intro p {
+  font-size: 18px;
+  color: #606f7b;
+  line-height: 1.7;
+  max-width: 900px;
+}
+
+.modern-values-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.modern-value-item {
+  position: relative;
+  padding: 25px 0;
+  border-top: 2px solid #eef2f5; /* Clean architectural layout line */
+  transition: all 0.3s ease;
+}
+
+/* Elegant line highlight on hover */
+.modern-value-item:hover {
+  border-top-color: #2c3e50;
+  transform: translateY(-2px);
+}
+
+.value-number {
+  display: block;
+  font-size: 38px; /* Balanced architectural size */
+  font-weight: 800;
+  color: #D4AF37; /* Solid brand gold color */
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin-bottom: 12px;
+}
+
+.modern-value-item h3 {
+  font-size: 22px; /* Matches standard side-card subheadings */
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.modern-value-item p {
+  font-size: 16px;
+  color: #556370;
+  line-height: 1.7;
+}
+
+/* --- Responsive Layout Rules --- */
+@media (max-width: 992px) {
+  .about-story-container {
+    flex-direction: column;
+    gap: 45px;
+  }
+  .about-story-text p {
+    max-width: 100%;
+  }
+  .about-story-image img {
+    height: 360px;
+  }
+  .about-hero h1 {
+    font-size: 42px;
+  }
+}
+
+/* ==========================================================================
+   9. MEET THE TEAM SECTION (Alternating Premium Rows)
+   ========================================================================== */
+.team-section {
+  padding: 120px 40px;
+  background-color: #ffffff;
+}
+
+.team-intro {
+  max-width: 1200px;
+  margin: 0 auto 70px auto;
+  text-align: left;
+}
+
+.team-intro h2 {
+  font-size: 36px;
+  color: #2c3e50;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.team-intro .slogan-divider {
+  margin: 0 0 25px 0;
+}
+
+.team-intro p {
+  font-size: 18px;
+  color: #606f7b;
+  line-height: 1.7;
+  max-width: 900px;
+}
+
+/* Container for all profiles */
+.team-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px; /* Clean breathing room between rows */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Alternating Row Layout */
+.team-row {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+/* Magnificently flips every second row automatically */
+.team-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.team-image {
+  flex: 1;
+  display: flex;
+}
+
+.team-image img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.team-text {
+  flex: 1.2;
+}
+
+.team-text h3 {
+  font-size: 30px;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.team-role {
+  display: block;
+  font-size: 15px;
+  color: #D4AF37; /* Solid brand gold */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+/* Premium Left-Bordered Blockquote Profile Quote */
+.team-quote {
+  font-size: 18px;
+  font-style: italic;
+  color: #2c3e50;
+  line-height: 1.6;
+  font-weight: 500;
+  border-left: 3px solid #D4AF37;
+  padding-left: 20px;
+  margin-bottom: 25px;
+}
+
+.team-desc {
+  font-size: 16px;
+  color: #556370;
+  line-height: 1.8;
+}
+
+/* --- Team Group Snapshot Finale --- */
+.team-group-snapshot {
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.team-group-snapshot img {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  object-fit: cover; /* Keeps the photo sharp and un-stretched */
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.group-caption {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #8c9ba5;
+  font-style: italic;
+  letter-spacing: 0.2px;
+}
+
+/* --- Responsive Layout Breaks for Mobile/Tablets --- */
+@media (max-width: 992px) {
+  .team-section {
+    padding: 80px 20px;
+  }
+  .team-rows-container {
+    gap: 70px;
+  }
+  .team-row, .team-row.reverse {
+    flex-direction: column; /* Stacks image on top cleanly on tablet/mobile */
+    gap: 35px;
+  }
+  .team-image img {
+    height: 380px;
+  }
+  .team-quote {
+    font-size: 17px;
+  }
+}
+
+/* ========================================================================== 
+   10. HOLZ- & MASSIVBAU PAGE SPECIFIC STYLES 
+   ========================================================================== */ 
+
+/* --- Hero Section (Optimiert: Text direkt auf das Bild geschrieben, ohne Button) --- */ 
+.massivbau-hero { 
+  height: 620px;  
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),  
+              url('pictures/index/forest.jpg') center/cover no-repeat; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+} 
+
+.massivbau-hero-content { 
+  max-width: 950px; 
+  width: 90%; 
+  color: #ffffff; 
+  padding: 0 20px; 
+} 
+
+.massivbau-hero-content h1 { 
+  font-size: 54px;  
+  font-weight: 800; 
+  margin-bottom: 20px; 
+  letter-spacing: 1px; 
+  text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.4);  
+} 
+
+/* Elegante goldene Trennlinie zwischen Titel und Untertitel */ 
+.hero-title-divider { 
+  width: 120px; 
+  height: 4px; 
+  background-color: #D4AF37; 
+  margin: 0 auto 25px auto; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+} 
+
+.massivbau-hero-content p { 
+  font-size: 24px;  
+  font-weight: 400; 
+  line-height: 1.4; 
+  color: #f8f9fa; 
+  text-shadow: 1px 2px 10px rgba(0, 0, 0, 0.4); 
+} 
+
+/* --- Accordion Section (High-End Professional) --- */ 
+.accordion-section { 
+  padding: 90px 40px; 
+  background-color: #f8f9fa;  
+} 
+
+.accordion-container { 
+  max-width: 920px; 
+  margin: 0 auto; 
+} 
+
+.accordion-intro { 
+  text-align: center; 
+  margin-bottom: 45px; 
+} 
+
+.accordion-intro h2 { 
+  font-size: 36px; 
+  color: #2c3e50; 
+  font-weight: 800; 
+  margin-bottom: 15px; 
+} 
+
+.accordion-intro p { 
+  font-size: 17px; 
+  color: #606f7b; 
+  max-width: 720px; 
+  margin: 0 auto; 
+} 
+
+/* Accordion Karten-Struktur */ 
+.accordion-item { 
+  background-color: #ffffff; 
+  border-radius: 8px; 
+  margin-bottom: 16px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02); 
+  border-left: 4px solid #eef2f5; 
+  overflow: hidden; 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+} 
+
+.accordion-item:hover { 
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05); 
+} 
+
+.accordion-item.active { 
+  border-left-color: #D4AF37;  
+  background-color: #ffffff; 
+} 
+
+/* Header-Layout & Flexbox */ 
+.accordion-header { 
+  width: 100%; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 20px 30px; 
+  background: none; 
+  border: none; 
+  text-align: left; 
+  cursor: pointer; 
+  transition: background-color 0.2s ease; 
+} 
+
+.header-main-content { 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 20px; 
+} 
+
+.accordion-icon { 
+  color: #D4AF37; 
+  font-size: 20px; 
+  width: 24px; 
+  text-align: center; 
+  margin-top: 3px; 
+} 
+
+/* Präzise Text-Hierarchie */ 
+.header-text-block { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 4px; 
+} 
+
+.header-title { 
+  font-size: 18px; 
+  font-weight: 800; /* Extra dicke Überschrift */ 
+  color: #2c3e50; 
+  letter-spacing: -0.2px; 
+  transition: color 0.2s ease; 
+} 
+
+.accordion-header:hover .header-title { 
+  color: #D4AF37; 
+} 
+
+.header-subtitle { 
+  font-size: 14.5px; 
+  font-weight: 400; /* Edler, feinerer Zusatz */ 
+  color: #718096; 
+} 
+
+/* Plus/Minus Status-Icon rechts */ 
+.toggle-status { 
+  font-size: 14px; 
+  color: #a0aec0; 
+  padding-left: 15px; 
+  transition: transform 0.25s ease, color 0.2s ease; 
+} 
+
+.accordion-item.active .toggle-status { 
+  color: #D4AF37; 
+} 
+
+/* Platzsparender, kompakter Inhaltsbereich */ 
+.accordion-body { 
+  max-height: 0; 
+  overflow: hidden; 
+  transition: max-height 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
+} 
+
+/* Bündige Einrückung perfekt unter der Schrift */ 
+.accordion-content-inner { 
+  padding: 4px 30px 24px 74px;  
+} 
+
+.accordion-content-inner p { 
+  font-size: 15.5px; 
+  color: #4a5560; 
+  line-height: 1.65; 
+  margin: 0; 
+} 
+
+/* --- Tech & Video Section --- */ 
+.tech-video-section { 
+  padding: 100px 40px; 
+  background-color: #ffffff; 
+  text-align: center; 
+} 
+
+.tech-video-container { 
+  max-width: 900px; 
+  margin: 0 auto; 
+} 
+
+.tech-video-container h2 { 
+  font-size: 36px; 
+  color: #2c3e50; 
+  font-weight: 800; 
+  margin-bottom: 15px; 
+} 
+
+.tech-intro-text { 
+  font-size: 17px; 
+  color: #4a5560; 
+  line-height: 1.8; 
+  margin-bottom: 45px; 
+} 
+
+/* Responsive 16:9 Video Wrapper */ 
+.video-wrapper { 
+  position: relative; 
+  padding-bottom: 56.25%;  
+  height: 0; 
+  overflow: hidden; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+  border-radius: 6px; 
+  margin-bottom: 60px; 
+} 
+
+.video-wrapper iframe { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+} 
+
+/* Premium Custom Fact/Stat Box (Optimierte Hierarchie) */ 
+.premium-stat-box { 
+  background-color: #2c3e50; 
+  color: #ffffff; 
+  padding: 50px 40px; 
+  border-radius: 8px; 
+  border-bottom: 4px solid #D4AF37; 
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); 
+  max-width: 850px;  
+  margin: 0 auto 60px auto; 
+} 
+
+.premium-stat-box h2 { 
+  font-size: 20px; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  color: #D4AF37; 
+  font-weight: 700; 
+  margin-bottom: 15px; 
+} 
+
+/* Kleine feine Trennlinie unter der Hauptüberschrift */ 
+.stat-divider { 
+  width: 60px; 
+  height: 2px; 
+  background-color: rgba(212, 175, 55, 0.5); 
+  margin: 0 auto 20px auto; 
+} 
+
+.stat-number { 
+  font-size: 34px;  
+  font-weight: 600; 
+  letter-spacing: 0.5px; 
+  color: #ffffff; 
+  margin-bottom: 12px; 
+} 
+
+.stat-desc { 
+  font-size: 15px; 
+  color: #cbd5e1;  
+  font-weight: 400; 
+  max-width: 600px; 
+  margin: 0 auto; 
+} 
+
+/* --- Responsive Layout Breaks for Mobile/Tablets --- */ 
+@media (max-width: 768px) { 
+  .massivbau-hero { 
+    height: 500px; 
+  } 
+  .massivbau-hero-content h1 { 
+    font-size: 36px; 
+  } 
+  .massivbau-hero-content p { 
+    font-size: 18px; 
+  } 
+  .hero-title-divider { 
+    width: 80px; 
+    margin-bottom: 20px; 
+  } 
+  .accordion-section, .tech-video-section { 
+    padding: 60px 20px; 
+  } 
+  .accordion-header { 
+    padding: 18px 20px; 
+  } 
+  .header-main-content { 
+    gap: 15px; 
+  } 
+  .accordion-content-inner { 
+    padding: 0 20px 20px 59px; 
+  } 
+  .header-title { 
+    font-size: 16px; 
+  } 
+  .header-subtitle { 
+    font-size: 13px; 
+  } 
+  .premium-stat-box { 
+    padding: 35px 20px; 
+  } 
+  .stat-number { 
+    font-size: 26px; 
+  } 
+}
+
+
+/* ========================================================================== 
+   11. PROJEKTE PAGE DETAILED SECTIONS (High-End Zick-Zack Layout)
+   ========================================================================== */ 
+
+/* Sanftes Scrollen aktivieren, wenn man auf die Ankerlinks klickt */
+html {
+  scroll-behavior: smooth;
+}
+
+.project-details-section {
+  padding: 40px 0;
+  background-color: #ffffff;
+}
+
+/* Wechselnder Hintergrund pro Projekt zur besseren Struktur */
+.project-detail-item {
+  padding: 100px 40px;
+  border-bottom: 1px solid #eef2f5;
+}
+
+.project-detail-item:nth-child(even) {
+  background-color: #f8f9fa; /* Dezenter Grauton für Abwechslung */
+}
+
+.project-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Das Herzstück: Flexbox Reihe */
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Jedes ZWEITE Projekt spiegelt die Spalten automatisch um! */
+.project-detail-item:nth-child(even) .project-row {
+  flex-direction: row-reverse;
+}
+
+/* Spalten-Breiten */
+.project-media-col, .project-text-col {
+  flex: 1;
+  width: 50%;
+}
+
+/* --- Linke Spalte: Galerie --- */
+.project-main-img-wrapper {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  margin-bottom: 15px;
+}
+
+.project-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-thumbnail-row {
+  display: flex;
+  gap: 12px;
+}
+
+.project-thumb {
+  flex: 1;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.project-thumb:hover, .project-thumb.active {
+  opacity: 1;
+  border-color: #D4AF37; /* Goldener Rahmen bei Aktivität */
+}
+
+/* --- Rechte Spalte: Text-Inhalte --- */
+.project-category {
+  display: inline-block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #D4AF37;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-size: 34px;
+  color: #2c3e50;
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  letter-spacing: -0.5px;
+}
+
+.project-title-divider {
+  width: 70px;
+  height: 3px;
+  background-color: #D4AF37;
+  margin-bottom: 25px;
+}
+
+/* Key-Facts Grid */
+.project-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 100%));
+  gap: 10px;
+  background-color: rgba(44, 62, 80, 0.03);
+  padding: 15px 20px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  border-left: 3px solid #2c3e50;
+}
+
+.fact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: #4a5560;
+}
+
+.fact-item i {
+  color: #2c3e50;
+  width: 16px;
+  text-align: center;
+}
+
+/* Fließtext */
+.project-description {
+  font-size: 16px;
+  color: #4a5560;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* Premium Highlights Checkliste */
+.project-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 25px 0 0 0;
+}
+
+.project-highlights li {
+  font-size: 15px;
+  color: #2c3e50;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.project-highlights li i {
+  color: #D4AF37; /* Goldene Haken */
+  font-size: 16px;
+}
+
+.portfolio-card {
+  display: block;          /* Macht das gesamte Kärtchen klickbar */
+  text-decoration: none;   /* Verhindert Unterstreichungen im Text */
+  color: inherit;          /* Behält deine vordefinierten Textfarben bei */
+}
+  
+/* ========================================================================== 
+   RESPONSIVE DESIGN (Mobil-Optimierung)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .project-row, .project-detail-item:nth-child(even) .project-row {
+    flex-direction: column; /* Spalten untereinander statt nebeneinander */
+    gap: 40px;
+  }
+  .project-media-col, .project-text-col {
+    width: 100%;
+  }
+  .project-main-img-wrapper {
+    height: 320px;
+  }
+  .project-detail-item {
+    padding: 60px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .project-title {
+    font-size: 26px;
+  }
+  .project-main-img-wrapper {
+    height: 240px;
+  }
+  .project-thumb {
+    height: 65px;
+  }
+}
+
+
+/* ==========================================================================
+   11. KARRIERE PAGE LAYOUT DEVELOPMENTS
+   ========================================================================== */
+
+/* --- Karriere Page Hero Layout --- */
+.karriere-hero {
+  height: 480px;
+  background: linear-gradient(rgba(44, 62, 80, 0.5), rgba(44, 62, 80, 0.65)), 
+              url('pictures/index/forest.jpg') center/cover no-repeat; /* Reuse your existing fallback or custom imagery */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.karriere-hero-content {
+  max-width: 950px;
+  width: 90%;
+  color: #ffffff;
+}
+
+.karriere-hero-content h1 {
+  font-size: 52px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.karriere-hero-content p {
+  font-size: 22px;
+  font-weight: 400;
+  color: #f8f9fa;
+  text-shadow: 1px 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Benefits Section Structure --- */
+.karriere-benefits {
+  padding: 100px 40px;
+  background-color: #ffffff;
+}
+
+.benefits-intro {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 60px auto;
+}
+
+.benefits-intro h2 {
+  font-size: 36px;
+  color: #2c3e50;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.benefits-intro p {
+  font-size: 18px;
+  color: #606f7b;
+  line-height: 1.7;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  text-align: left;
+  padding: 25px 0;
+  border-top: 2px solid #eef2f5;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  border-top-color: #D4AF37;
+  transform: translateY(-2px);
+}
+
+.benefit-icon {
+  font-size: 32px;
+  color: #D4AF37;
+  margin-bottom: 15px;
+}
+
+.benefit-card h3 {
+  font-size: 20px;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.benefit-card p {
+  font-size: 15.5px;
+  color: #556370;
+  line-height: 1.65;
+}
+
+/* --- Stellenangebote / Job Offer Grid --- */
+.jobs-section {
+  padding: 90px 40px;
+  background-color: #f8f9fa;
+}
+
+.jobs-intro h2 {
+  font-size: 36px;
+  color: #2c3e50;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.job-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border-left: 4px solid #2c3e50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.job-card:hover {
+  border-left-color: #D4AF37;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.job-tag {
+  background-color: rgba(212, 175, 55, 0.1);
+  color: #D4AF37;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.job-card h3 {
+  font-size: 24px;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.job-card p {
+  font-size: 16px;
+  color: #556370;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  flex-grow: 1; /* Pushes button smoothly to the bottom card bounds */
+}
+
+.job-apply-btn {
+  display: inline-block;
+  color: #2c3e50;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1.5px solid #2c3e50;
+  padding: 11px 22px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.job-apply-btn i {
+  margin-left: 6px;
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.job-apply-btn:hover {
+  background-color: #D4AF37;
+  border-color: #D4AF37;
+  color: #ffffff;
+}
+
+.job-apply-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* --- Premium 60-Second Express Application Form --- */
+.express-section {
+  padding: 100px 40px;
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+.express-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border-top: 4px solid #D4AF37;
+}
+
+.express-container h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.express-container p {
+  font-size: 16px;
+  color: #606f7b;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.express-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-row {
+  display: flex;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #eef2f5;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #2c3e50;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #D4AF37;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.08);
+}
+
+.submit-form-btn {
+  background-color: #D4AF37;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 16px 35px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+  margin-top: 15px;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.submit-form-btn:hover {
+  background-color: #2c3e50;
+  box-shadow: 0 6px 20px rgba(44, 62, 80, 0.2);
+  transform: translateY(-2px);
+}
+
+/* --- Media Queries for Perfect Responsiveness --- */
+@media (max-width: 768px) {
+  .karriere-hero h1 { font-size: 38px; }
+  .karriere-hero p { font-size: 18px; }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .express-container {
+    padding: 30px 20px;
+  }
+  
+  .karriere-benefits, .jobs-section, .express-section {
+    padding: 60px 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   HIGH-END CORPORATE FOOTER (Bulletproof Grid + Perfect Fatness)
+   ========================================================================== */
+.hager-footer {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 30px 40px 0 40px; /* The exact perfect fatness from before */
+    border-top: 4px solid #D4AF37;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* THE FIX: Grid strictly locks the 3 columns side-by-side */
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr; 
+    align-items: center; /* Centers them vertically on the same height line */
+    gap: 20px;
+    padding-bottom: 25px; 
+}
+
+/* --- THE BRANDING COLUMN (Logo + Text side-by-side) --- */
+.branding-col {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+/* --- MAXIMIZED LOGO --- */
+.footer-logo {
+    max-width: 220px; 
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: -50px; 
+    margin-bottom: -50px;
+    transform: scale(1.6); 
+}
+
+/* --- TEXT MATCHED TO OTHER COLUMNS --- */
+.branding-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-tagline {
+    font-size: 13px; 
+    color: #cbd5e0;  
+    line-height: 1.5;
+    max-width: 240px; /* Text wraps inside its box instead of breaking the layout */
+    margin: 0;
+    font-weight: 400; 
+}
+
+.footer-tagline strong {
+    color: #ffffff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+/* --- THE OTHER 2 TEXT COLUMNS --- */
+.hager-footer h4 {
+    color: #D4AF37;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 12px; 
+    margin-top: 0;
+    letter-spacing: 0.5px;
+}
+
+.contact-list, .legal-grid {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Kills any stray bullet points */
+}
+
+.contact-list li, .legal-grid a {
+    font-size: 13px; 
+    color: #cbd5e0;
+    margin-bottom: 6px;
+    line-height: 1.4;
+    text-decoration: none;
+    display: block;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+    margin-top: 0; 
+}
+
+.footer-bottom-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #a0aec0;
+}
+
+/* Pushed the mobile stacking to ONLY trigger on actual phones (500px).
+   Your iPad/Tablet will now completely ignore this and stay horizontal! 
+*/
+@media (max-width: 500px) {
+    .footer-inner {
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+    .branding-col {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+    .footer-logo {
+        margin-left: 30px; 
+    }
+}
